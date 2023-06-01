@@ -6,8 +6,8 @@ RUN apt install aptitude -y
 RUN aptitude update
 RUN aptitude install -y nodejs npm 
 RUN apt install -y git
-RUN git clone https://github.com/wahtej/ml-hospital-react.git
-WORKDIR ./ml-hospital-react/reacthospital
+RUN https://github.com/wahtej/mi-react.git
+WORKDIR ./mi-react
 RUN npm install
 EXPOSE 3000
 CMD ["npm", "start"] 
