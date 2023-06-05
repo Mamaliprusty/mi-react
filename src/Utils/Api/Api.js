@@ -1,7 +1,7 @@
 
 
 //local api
- export const baseURL ='52.66.206.63:31502/'
+ export const baseURL ='http://backendservice.default.svc.cluster.local:8080/'
 // Server Api
 // export const baseURL ='https://ml-hospital-mngmt.azurewebsites.net/'
 //vm Api
