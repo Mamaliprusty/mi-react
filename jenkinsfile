@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('cleanup workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('git -clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/wahtej/mi-react.git'
+            }
+        }
+        stage('docker build frontend') {
+            steps {
+                script {
+                    sh "sudo docker build --no-cache -t wahtej/frontnew2 ."
+                }
+            }
+        }
+        stage('docker push') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhub1', variable: 'dockerhub1')]) {
+                        sh "sudo docker login -u wahtej -p ${dockerhub1}" 
+                    }
+                        sh "sudo docker push wahtej/frontnew2:latest"
+                        
+                        
+                }
+            }
+        }
+    }
+}
