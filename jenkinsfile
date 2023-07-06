@@ -9,13 +9,13 @@ pipeline {
         }
         stage('git -clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/wahtej/mi-react.git'
+                git branch: 'main', url: 'https://github.com/Mamaliprusty/mi-react.git'
             }
         }
         stage('docker build frontend') {
             steps {
                 script {
-                    sh "sudo docker build --no-cache -t wahtej/frontnew2 ."
+                    sh "sudo docker build --no-cache -t roshnirp/frontnew2 ."
                 }
             }
         }
@@ -23,9 +23,9 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub1', variable: 'dockerhub1')]) {
-                        sh "sudo docker login -u wahtej -p ${dockerhub1}" 
+                        sh "sudo docker login -u roshnirp -p ${dockerhub1}" 
                     }
-                        sh "sudo docker push wahtej/frontnew2:latest"
+                        sh "sudo docker push roshnirp/frontnew2:latest"
                         
                         
                 }
